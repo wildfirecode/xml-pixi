@@ -49,7 +49,7 @@ const createGrid = (xmlRoot: INode, data) => {
             cellContainer.position.set(x, y);
         }
     }
-    console.log('create grid result', gridContainer);
+    // console.log('create grid result', gridContainer);
     return gridContainer;
 }
 
