@@ -1,7 +1,6 @@
 import { Container, Sprite } from "pixi.js";
 import parse from 'xml-parser'
 
-
 interface IAttributes {
     texture?: string,
     cellHeight?: number,
@@ -16,8 +15,8 @@ interface INode {
 }
 
 const nodeAtrributeBehaviorMap = {
-    anchorTexture: function (display, attribute) { display.anchorTexture = { x: attribute, y: attribute } },
-    anchorX: function (display, attribute) { display.anchorX = attribute }
+    pivotX: function (display, attribute) { display.pivot.x = attribute },
+    x: function (display, attribute) { display.x = attribute }
 }
 
 let _assetsMap;
@@ -48,6 +47,11 @@ const createGrid = (xmlRoot: INode, data) => {
             const y = cellHeight * row;
             cellContainer.position.set(x, y);
         }
+    }
+    for (const key in xmlRoot.attributes) {
+        const val = xmlRoot.attributes[key];
+        nodeAtrributeBehaviorMap[key] &&
+            nodeAtrributeBehaviorMap[key](gridContainer, val)
     }
     // console.log('create grid result', gridContainer);
     return gridContainer;
