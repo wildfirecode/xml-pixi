@@ -53,7 +53,6 @@ const createGrid = (xmlRoot: INode, data) => {
         nodeAtrributeBehaviorMap[key] &&
             nodeAtrributeBehaviorMap[key](gridContainer, val)
     }
-    // console.log('create grid result', gridContainer);
     return gridContainer;
 }
 
