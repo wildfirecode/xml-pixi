@@ -16,7 +16,8 @@ interface INode {
 
 const nodeAtrributeBehaviorMap = {
     pivotX: function (display, attribute) { display.pivot.x = attribute },
-    x: function (display, attribute) { display.x = attribute }
+    x: function (display, attribute) { display.x = attribute },
+    y: function (display, attribute) { display.y = attribute }
 }
 
 let _assetsMap;
